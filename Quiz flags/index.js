@@ -30,7 +30,6 @@ db.connect()
 let currentQuestion = {};
 
 let quiz = [
-  {name: "Brazil", flag: "BR"}
 ]
 
 db.query("SELECT * FROM flags", (err, res) =>{
