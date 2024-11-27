@@ -17,7 +17,30 @@ app.use(express.static("public", {
   }
 }))
 
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "12345",
+  port: "5432"
+})
+
+db.connect()
+
 let currentQuestion = {};
+
+let quiz = [
+  {name: "Brazil", flag: "BR"}
+]
+
+db.query("SELECT * FROM flags", (err, res) =>{
+  if(err){
+    console.error("Error executing query", err.stack)
+  }else{
+    quiz = res.rows
+  }
+  db.end()
+})
 
 // GET home page
 app.get("/", (req, res) => {
