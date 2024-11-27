@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import  pg from "pg"
 
 const app = express();
 const port = 3000;
@@ -8,7 +9,13 @@ let totalCorrect = 0;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("public", {
+  setHeaders: (res, path) =>{
+      if(path.endsWith(".css")){
+          res.set("Content-Type", "text/css")
+      }
+  }
+}))
 
 let currentQuestion = {};
 
