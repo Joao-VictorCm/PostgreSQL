@@ -13,3 +13,6 @@
 
 -- SELECT country FROM world_food 
 -- WHERE  country LIKE 'U' || '%'   <- Aqui a comparação
+
+-- SELECT country FROM world_food 
+-- WHERE  country LIKE '%' || 'a'    <- mesma comparação, só que neste caso é os paises que terminam com a letra 'a'
